@@ -7,12 +7,12 @@
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
 		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
 		<script src="js/jquery.scrolly.min.js"></script>
 		<script src="js/jquery.onvisible.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -20,6 +20,20 @@
 			<link rel="stylesheet" href="css/style-noscript.css" />
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<style type="text/css">
+			input.ng-invalid {
+			  color: red;
+			}
+
+			input.ng-valid {
+			  color: green;
+			}
+
+			.validation-message {
+				text-align: center;
+				color: red;
+			}
+		</style>
 	</head>
 	<body class="no-sidebar">
 
@@ -43,97 +57,100 @@
 			
 		<!-- Main -->
 			<div class="wrapper style1">
-				<div class="container 8u">
-					<article id="main" class="special">
+				<div class="container 8u" ng-app="root">
+					<article id="main" class="special" ng-controller="index">
 						<header>
 								The following questionnaire contains questions which will be judged on creativity, clarity of thought
-								and critical thinking. Please refrain from exceeding the word limit lest we will have to disqualify your
-								form.
+								and critical thinking.
 						</header>
 
+						<form name="registration">
+							<section >
+								<section>
+									<header>
+										<h3>Personal Details</h3>
+									</header>
 
-						<form action="#">
-							<section>
-								<header>
-									<h3>Personal Details</h3>
-								</header>
+									<label for="name" name="name">Name</label>
+									<input type="text" id="name" name="name" placeholder="Name" ng-model="user.name" required/>
 
-								<label for="name">Name</label>
-								<input type="text" id="name" name="name" placeholder="Name"/>
+									<label for="email" name="email">E-mail</label>
+									<input type="email" id="email" name="email" placeholder="E-mail" ng-model="user.email" required/>
 
-								<label for="email">E-mail</label>
-								<input type="email" id="email" name="email" placeholder="E-mail"/>
+									<label for="college" name="college">College</label>
+									<input type="text" id="college" name="college" placeholder="College" ng-model="user.college" required/>
 
-								<label for="college">College</label>
-								<input type="text" id="college" name="college" placeholder="College"/>
+									<label for="mobile" name="mobile">Mobile</label>
+									<input type="number" name="mobile" id="mobile" placeholder="Mobile" ng-model="user.mobile" required/>
+								</section>
 
-								<label for="mobile">Mobile</label>
-								<input type="telephone" name="mobile" id="mobile" placeholder="Mobile">
-							</section>
+								<section>
+									<header>
+										<h3>
+											<label for="q1" name="q1">
+												If you had to award yourself with one prestigious honor from all around the world, what would it be and why?
+											</label>
+										</h3>
+									</header>
 
-							<section>
-								<header>
-									<h3>
-										<label for="form-q1">
-											If you had to award yourself with one prestigious honor from all around the world, what would it be and why?
-										</label>
-									</h3>
-								</header>
+									<textarea name="q1" id="q1" cols="10" rows="10" ng-model="user.q1"></textarea>
 
-								<textarea name="q1" id="form-q1" cols="30" rows="10"></textarea>
-							</section>
+								</section>
 
-							<section>
-								<header>
-									<h3>
-										<label for="form-q2">
-											In the light of recent missile attack on flight MH17 and the stand-off in Israel, don’t you think terrorism has hit a new peak and human intervention, namely diplomacy is failing to find ground. State your opinion on the topic.
-										</label>
-									</h3>
-								</header>
+								<section>
+									<header>
+										<h3>
+											<label for="q2" name="q2">
+												In the light of recent missile attack on flight MH17 and the stand-off in Israel, don’t you think terrorism has hit a new peak and human intervention, namely diplomacy is failing to find ground. State your opinion on the topic.
+											</label>
+										</h3>
+									</header>
 
-								<textarea name="q2" id="form-q2" cols="30" rows="10"></textarea>
-							</section>
+									<textarea name="q2" id="q2" cols="10" rows="10" ng-model="user.q2"></textarea>
+								</section>
 
-							<section>
-								<header>
-									<h3>
-										<label for="form-q3">
-											India is overjoyed at the prospect of a medal in the Commonwealth Games. Do you think the time will come when even a gold at the Olympics would seem ordinary to us just like another feather in the cap?
-										</label>
-									</h3>
-								</header>
+								<section>
+									<header>
+										<h3>
+											<label for="q3" name="q3">
+												India is overjoyed at the prospect of a medal in the Commonwealth Games. Do you think the time will come when even a gold at the Olympics would seem ordinary to us just like another feather in the cap?
+											</label>
+										</h3>
+									</header>
 
-								<textarea name="q3" id="form-q3" cols="30" rows="10"></textarea>
-							</section>
+									<textarea name="q3" id="q3" cols="10" rows="10" ng-model="user.q3"></textarea>
+								</section>
 
-							<section>
-								<header>
-									<h3>
-										<label for="form-q4">
-											You have to wipe out complete trace of a human invention, what will it be? State the effects of your actions and how would it make the world a better place?
-										</label>
-									</h3>
-								</header>
+								<section>
+									<header>
+										<h3>
+											<label for="q4" name="q4">
+												You have to wipe out complete trace of a human invention, what will it be? State the effects of your actions and how would it make the world a better place?
+											</label>
+										</h3>
+									</header>
 
-								<textarea name="q4" id="form-q4" cols="30" rows="10"></textarea>
-							</section>
+									<textarea name="q4" id="q4" cols="10" rows="10" ng-model"user.q4"></textarea>
+								</section>
 
-							<section>
-								<header>
-									<h3>
-										<label for="form-q5">
-											Do you think is it possible for someone to meet the basic requirements of living in an urban area with around Rs.50/day? Do you consider these government estimates to be realistic or unrealistic?
-										</label>
-									</h3>
-								</header>
+								<section>
+									<header>
+										<h3>
+											<label for="q5" name="q5">
+												Do you think is it possible for someone to meet the basic requirements of living in an urban area with around Rs.50/day? Do you consider these government estimates to be realistic or unrealistic?
+											</label>
+										</h3>
+									</header>
 
-								<textarea name="q5" id="form-q5" cols="30" rows="10"></textarea>
+									<textarea name="q5" id="q5" cols="10" rows="10" ng-model="user.q5"></textarea>
+								</section>
+
 							</section>
 						</form>
-							
+
 						<footer>
-							<a href="no-sidebar.html" class="button">Submit</a>
+							<p class="validation-message" ng-show="registration.$invalid" class="special">Your Form is incomplete</p>
+							<button class="button" ng-disabled="registration.$invalid" ng-click="submit()">Submit</button>
 						</footer>	
 					</article>
 				</div>
@@ -166,5 +183,7 @@
 				</div>
 			</div>
 
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+		<script type="text/javascript" src="scripts/main.js"></script>
 	</body>
 </html>
