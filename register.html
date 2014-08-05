@@ -33,6 +33,10 @@
 				text-align: center;
 				color: red;
 			}
+
+			.error {
+				color: red;
+			}
 		</style>
 	</head>
 	<body class="no-sidebar">
@@ -71,23 +75,51 @@
 										<h3>Personal Details</h3>
 									</header>
 
-									<label for="name" name="name">Name</label>
+									<label for="name">Name</label>
+									<div class="error" ng-show="registration.name.$dirty && registration.name.$invalid">
+										<div class="error" ng-show="registration.name.$error.required">
+												You must enter your name
+										</div>
+									</div>
 									<input type="text" id="name" name="name" placeholder="Name" ng-model="user.name" required/>
 
-									<label for="email" name="email">E-mail</label>
+									<label for="email">E-mail</label>
+									<div class="error" ng-show="registration.email.$dirty && registration.email.$invalid">
+										<div ng-show="registration.email.$error.required">
+											You must enter your e-mail
+										</div>
+
+										<div ng-show="registration.email.$error.email">
+											Illegal Email
+										</div>
+									</div>
 									<input type="email" id="email" name="email" placeholder="E-mail" ng-model="user.email" required/>
 
-									<label for="college" name="college">College</label>
+									<label for="college">College</label>
+									<div class="error" ng-show="registration.college.$dirty && registration.college.$invalid">
+										<div class="error" ng-show="registration.college.$error.required">
+												You must enter your college 
+										</div>
+									</div>
 									<input type="text" id="college" name="college" placeholder="College" ng-model="user.college" required/>
 
-									<label for="mobile" name="mobile">Mobile</label>
-									<input type="number" name="mobile" id="mobile" placeholder="Mobile" ng-model="user.mobile" required/>
+									<label for="mobile">Mobile</label>
+									<div class="error" ng-show="registration.mobile.$dirty && registration.mobile.$invalid">
+										<div class="error" ng-show="registration.mobile.$error.required">
+												You must enter your mobile 
+										</div>
+
+										<div class="error" ng-show="registration.mobile.$error.minlength">
+												Minimum length should be 10
+										</div>
+									</div>
+									<input type="number" name="mobile" id="mobile" ng-minlength="10" placeholder="Mobile" ng-model="user.mobile" required/>
 								</section>
 
 								<section>
 									<header>
 										<h3>
-											<label for="q1" name="q1">
+											<label for="q1">
 												If you had to award yourself with one prestigious honor from all around the world, what would it be and why?
 											</label>
 										</h3>
@@ -100,7 +132,7 @@
 								<section>
 									<header>
 										<h3>
-											<label for="q2" name="q2">
+											<label for="q2">
 												In the light of recent missile attack on flight MH17 and the stand-off in Israel, don’t you think terrorism has hit a new peak and human intervention, namely diplomacy is failing to find ground. State your opinion on the topic.
 											</label>
 										</h3>
@@ -112,7 +144,7 @@
 								<section>
 									<header>
 										<h3>
-											<label for="q3" name="q3">
+											<label for="q3">
 												India is overjoyed at the prospect of a medal in the Commonwealth Games. Do you think the time will come when even a gold at the Olympics would seem ordinary to us just like another feather in the cap?
 											</label>
 										</h3>
@@ -124,7 +156,7 @@
 								<section>
 									<header>
 										<h3>
-											<label for="q4" name="q4">
+											<label for="q4">
 												You have to wipe out complete trace of a human invention, what will it be? State the effects of your actions and how would it make the world a better place?
 											</label>
 										</h3>
@@ -136,7 +168,7 @@
 								<section>
 									<header>
 										<h3>
-											<label for="q5" name="q5">
+											<label for="q5">
 												Do you think is it possible for someone to meet the basic requirements of living in an urban area with around Rs.50/day? Do you consider these government estimates to be realistic or unrealistic?
 											</label>
 										</h3>
