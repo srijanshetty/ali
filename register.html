@@ -54,7 +54,10 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
+						
+							<li><a href="index.html">ALI</a></li>
 							<li><a href="index.html">Antaragni '14</a></li>
+							<li><a href="register.html">Register</a></li>
 						</ul>
 					</nav>
 			</div>
@@ -62,13 +65,13 @@
 		<!-- Main -->
 			<div class="wrapper style1">
 				<div class="container 8u" ng-app="root">
-					<article id="main" class="special" ng-controller="index">
+					<article id="main" class="special">
 						<header>
 								The following questionnaire contains questions which will be judged on creativity, clarity of thought
 								and critical thinking.
 						</header>
 
-						<form name="registration">
+						<form name="registration" action="register.php" method="POST">
 							<section >
 								<section>
 									<header>
@@ -102,6 +105,14 @@
 										</div>
 									</div>
 									<input type="text" id="college" name="college" placeholder="College" ng-model="user.college" required/>
+									
+									<label for="city">City</label>
+									<div class="error" ng-show="registration.city.$dirty && registration.city.$invalid">
+										<div class="error" ng-show="registration.city.$error.required">
+												You must enter your city
+										</div>
+									</div>
+									<input type="text" id="city" name="city" placeholder="City" ng-model="user.city" required/>
 
 									<label for="mobile">Mobile</label>
 									<div class="error" ng-show="registration.mobile.$dirty && registration.mobile.$invalid">
@@ -178,12 +189,12 @@
 								</section>
 
 							</section>
-						</form>
 
-						<footer>
-							<p class="validation-message" ng-show="registration.$invalid" class="special">Your Form is incomplete</p>
-							<button class="button" ng-disabled="registration.$invalid" ng-click="submit()">Submit</button>
-						</footer>
+                            <footer>
+                                <p class="validation-message" ng-show="registration.$invalid">Your Form is incomplete</p>
+                                <input type="submit" name="submit" id="submit" value="Submit" />
+                            </footer>
+						</form>
 					</article>
 				</div>
 
@@ -197,15 +208,15 @@
 							<!-- Contact -->
 								<section class="contact">
 									<ul class="icons">
-										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+										<li><a href="https://twitter.com/antaragni" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="https://facebook.com/antaragni.iitk" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
 									</ul>
 								</section>
 
 							<!-- Copyright -->
 								<div class="copyright">
 									<ul class="menu">
-										<li>&copy; Srijan R. Shetty. All rights reserved.</li>
+										<li>&copy; Antaragni. All rights reserved.</li>
 									</ul>
 								</div>
 
